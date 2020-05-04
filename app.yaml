@@ -9,8 +9,11 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: .*
-  script: main.app
+- url: /
+  script: handlers.main.app
+
+- url: /tuits/new
+  script: handlers.tuits.new.app
 
 libraries:
 - name: webapp2
