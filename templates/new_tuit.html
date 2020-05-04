@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo tuit</title>
+
+    <script>
+        function check() {
+            const text = document.getElementById("textTuit");
+
+            return text.value.trim().length > 0 && text.value.length < 281;
+        }
+    </script>
+</head>
+<body>
+<h1>Nuevo tuit</h1>
+<form action="/tuits/new" id="formNewTuit" method="post" onsubmit="return check()">
+        <input id="textTuit" maxlength="280" name="textTuit" placeholder="¿Que está pasando?" type="text">
+    <input type="submit" value="Tuitear"></input>
+</form>
+
+</body>
+</html>
