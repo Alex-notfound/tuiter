@@ -15,10 +15,21 @@
 # limitations under the License.
 #
 import webapp2
+from webapp2_extras import jinja2
+
+from model.tuit import Tuit
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        tuits = Tuit.query().order(-Tuit.dateTime)
+
+        values = {
+            "tuits": tuits
+        }
+        jinja = jinja2.get_jinja2(app=self.app)
+        self.response.write(jinja.render_template("index.html", **values))
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
