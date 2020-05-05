@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevo tuit</title>
+{% extends "skeleton.html" %}
 
-    <script>
-        function check() {
-            const text = document.getElementById("textTuit");
+{% block contenido %}
+    <div class="p-2 border-bottom">
+        <h3>Tuitear</h3>
+    </div>
+    <div class="pl-4 pr-4 pt-4">
+        <form action="/tuits/new" id="formNewTuit" method="post" onsubmit="return check()">
+            <div class="form-group">
+                        <textarea class="form-control form-control-lg border-0" id="textTuit" maxlength="280"
+                                  name="textTuit" placeholder="¿Que está pasando?"
+                                  style="background-color: rgb(21, 32, 43); color: #9197a3; resize: none; height: 140px;"
+                                  type="text"></textarea>
+            </div>
+            <div class="form-group text-right">
+                <input class="btn mb-2 rounded-pill font-weight-bold"
+                       style="background-color: #00acee; color: white" type="submit" value="Tuitear">
+            </div>
+        </form>
+    </div>
+    <div class="p-1" style="background-color: rgb(37, 51, 65);"></div>
 
-            return text.value.trim().length > 0 && text.value.length < 281;
-        }
-    </script>
-</head>
-<body>
-<h1>Nuevo tuit</h1>
-<form action="/tuits/new" id="formNewTuit" method="post" onsubmit="return check()">
-        <input id="textTuit" maxlength="280" name="textTuit" placeholder="¿Que está pasando?" type="text">
-    <input type="submit" value="Tuitear"></input>
-</form>
+<script>
+    function check() {
+        const text = document.getElementById("textTuit");
 
-</body>
-</html>
+        return text.value.trim().length > 0 && text.value.length < 281;
+    }
+</script>
+{% endblock %}
