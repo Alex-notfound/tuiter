@@ -10,20 +10,17 @@ from webapp2_extras.users import users
 
 from model.tuit import Tuit
 from model.user import User
+from utilities import Utilities
 
 
 class NewTuitHandler(webapp2.RequestHandler):
     def get(self):
-
-        usr = users.get_current_user()
-
-        if usr:
-            url_usr = users.create_logout_url("/")
-        else:
-            url_usr = users.create_login_url("/")
+        usr, url_usr, userActual = Utilities.checkUser()
 
         values = {
             "usr": usr,
+            "url_usr": url_usr,
+            "userActual": userActual,
         }
 
         jinja = jinja2.get_jinja2(app=self.app)
@@ -31,19 +28,17 @@ class NewTuitHandler(webapp2.RequestHandler):
 
     def post(self):
         text = self.request.get("textTuit", "")
-
-        usr = users.get_current_user()
-        user = User.query(User.email == usr.email()).get()
-        print(user)
-
         tamText = len(text)
         if tamText < 1 or tamText > 280:
             return self.redirect("/")
-        else:
-            tuit = Tuit(text=text, user=user.key)
-            tuit.put()
-            time.sleep(1)
-            return self.redirect("/")
+
+        usr = users.get_current_user()
+        user = User.getUserByEmail(usr.email())
+        tuit = Tuit(text=text, user=user.key)
+        tuit.put()
+        time.sleep(2)
+        return self.redirect("/")
+
 
 app = webapp2.WSGIApplication([
     ('/tuits/new', NewTuitHandler)
