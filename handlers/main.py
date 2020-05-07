@@ -16,30 +16,19 @@
 #
 import webapp2
 from webapp2_extras import jinja2
-from webapp2_extras.users import users
-
 from model.tuit import Tuit
-from model.user import User
+from utilities import Utilities
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-
-        usr = users.get_current_user()
-
-        if usr:
-            url_usr = users.create_logout_url("/")
-            if not User.query(User.email == usr.email()).get():
-                user = User(name=usr.nickname(), email=usr.email())
-                user.put()
-        else:
-            url_usr = users.create_login_url("/")
-
+        usr, url_usr, userActual = Utilities.checkUser()
         tuits = Tuit.query().order(-Tuit.dateTime)
 
         values = {
             "usr": usr,
             "url_usr": url_usr,
+            "userActual": userActual,
             "tuits": tuits,
             "title": "Inicio"
         }
