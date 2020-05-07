@@ -23,90 +23,100 @@
 <div class="container" style="height: 100%">
     <div class="row" style="background-color: rgb(21, 32, 43); height: 100%;">
         <div class="col-2 border-right" id="navbar">
-            <ul class="nav flex-column">
-                <li class="nav-item mt-4">
-                    <a href="/">
-                        <img src="https://miro.medium.com/max/300/1*jbXNuDJH3G09f3pUQyCmMA.png"
-                             style="width: 2em; height: 2em;">
-                    </a>
-                </li>
+            <div class="sticky-top">
+                <ul class="nav flex-column">
+                    <li class="nav-item mt-4">
+                        <a href="/">
+                            <img src="https://miro.medium.com/max/300/1*jbXNuDJH3G09f3pUQyCmMA.png"
+                                 style="width: 2em; height: 2em;">
+                        </a>
+                    </li>
 
-                <li class="nav-item mt-4">
-                    <a href="/" style="color: white">
-                        <svg class="bi bi-house" fill="currentColor" height="2em" viewBox="0 0 16 16" width="2em"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                  d="M2 13.5V7h1v6.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V7h1v6.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5zm11-11V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z"
-                                  fill-rule="evenodd"/>
-                            <path clip-rule="evenodd"
-                                  d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z"
-                                  fill-rule="evenodd"/>
-                        </svg>
-                        Inicio
-                    </a>
-                </li>
+                    <li class="nav-item mt-4">
+                        <a href="/" style="color: white">
+                            <svg class="bi bi-house" fill="currentColor" height="2em" viewBox="0 0 16 16" width="2em"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd"
+                                      d="M2 13.5V7h1v6.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V7h1v6.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5zm11-11V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z"
+                                      fill-rule="evenodd"/>
+                                <path clip-rule="evenodd"
+                                      d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z"
+                                      fill-rule="evenodd"/>
+                            </svg>
+                            Inicio
+                        </a>
+                    </li>
+                    {% if usr %}
+                    <li class="nav-item mt-4">
+                        <a href="/tuits/created?id={{ userActual.key.urlsafe() }}" style="color: white">
+                            <svg class="bi bi-person-square" fill="currentColor" height="2em" viewBox="0 0 16 16"
+                                 width="2em"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd"
+                                      d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z"
+                                      fill-rule="evenodd"/>
+                                <path clip-rule="evenodd"
+                                      d="M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 100-6 3 3 0 000 6z"
+                                      fill-rule="evenodd"/>
+                            </svg>
+                            Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a href="/tuits/new" style="color: white">
+                            <svg class="bi bi-pencil-square" fill="currentColor" height="2em" viewBox="0 0 16 16"
+                                 width="2em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.502 1.94a.5.5 0 010 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 01.707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 00-.121.196l-.805 2.414a.25.25 0 00.316.316l2.414-.805a.5.5 0 00.196-.12l6.813-6.814z"/>
+                                <path clip-rule="evenodd"
+                                      d="M1 13.5A1.5 1.5 0 002.5 15h11a1.5 1.5 0 001.5-1.5v-6a.5.5 0 00-1 0v6a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5H9a.5.5 0 000-1H2.5A1.5 1.5 0 001 2.5v11z"
+                                      fill-rule="evenodd"/>
+                            </svg>
+                            Tuitear
+                        </a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a href="{{ url_usr }}" style="color: white">
+                            <svg class="bi bi-box-arrow-left" fill="currentColor" height="2em" viewBox="0 0 16 16"
+                                 width="2em" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd"
+                                      d="M4.354 11.354a.5.5 0 000-.708L1.707 8l2.647-2.646a.5.5 0 10-.708-.708l-3 3a.5.5 0 000 .708l3 3a.5.5 0 00.708 0z"
+                                      fill-rule="evenodd"/>
+                                <path clip-rule="evenodd" d="M11.5 8a.5.5 0 00-.5-.5H2a.5.5 0 000 1h9a.5.5 0 00.5-.5z"
+                                      fill-rule="evenodd"/>
+                                <path clip-rule="evenodd"
+                                      d="M14 13.5a1.5 1.5 0 001.5-1.5V4A1.5 1.5 0 0014 2.5H7A1.5 1.5 0 005.5 4v1.5a.5.5 0 001 0V4a.5.5 0 01.5-.5h7a.5.5 0 01.5.5v8a.5.5 0 01-.5.5H7a.5.5 0 01-.5-.5v-1.5a.5.5 0 00-1 0V12A1.5 1.5 0 007 13.5h7z"
+                                      fill-rule="evenodd"/>
+                            </svg>
+                            Salir
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item mt-4">
+                        <a href="{{ url_usr }}" style="color: white">
+                            <svg class="bi bi-box-arrow-in-right" fill="currentColor" height="2em" viewBox="0 0 16 16"
+                                 width="2em" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd"
+                                      d="M8.146 11.354a.5.5 0 010-.708L10.793 8 8.146 5.354a.5.5 0 11.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0z"
+                                      fill-rule="evenodd"/>
+                                <path clip-rule="evenodd" d="M1 8a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9A.5.5 0 011 8z"
+                                      fill-rule="evenodd"/>
+                                <path clip-rule="evenodd"
+                                      d="M13.5 14.5A1.5 1.5 0 0015 13V3a1.5 1.5 0 00-1.5-1.5h-8A1.5 1.5 0 004 3v1.5a.5.5 0 001 0V3a.5.5 0 01.5-.5h8a.5.5 0 01.5.5v10a.5.5 0 01-.5.5h-8A.5.5 0 015 13v-1.5a.5.5 0 00-1 0V13a1.5 1.5 0 001.5 1.5h8z"
+                                      fill-rule="evenodd"/>
+                            </svg>
+                            Iniciar sesión
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
                 {% if usr %}
-                <li class="nav-item mt-4">
-                    <a href="/tuits/created" style="color: white">
-                        <svg class="bi bi-person-square" fill="currentColor" height="2em" viewBox="0 0 16 16"
-                             width="2em"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                  d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z"
-                                  fill-rule="evenodd"/>
-                            <path clip-rule="evenodd" d="M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 100-6 3 3 0 000 6z"
-                                  fill-rule="evenodd"/>
-                        </svg>
-                        Perfil
-                    </a>
-                </li>
-                <li class="nav-item mt-4">
-                    <a href="/tuits/new" style="color: white">
-                        <svg class="bi bi-pencil-square" fill="currentColor" height="2em" viewBox="0 0 16 16"
-                             width="2em" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.502 1.94a.5.5 0 010 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 01.707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 00-.121.196l-.805 2.414a.25.25 0 00.316.316l2.414-.805a.5.5 0 00.196-.12l6.813-6.814z"/>
-                            <path clip-rule="evenodd"
-                                  d="M1 13.5A1.5 1.5 0 002.5 15h11a1.5 1.5 0 001.5-1.5v-6a.5.5 0 00-1 0v6a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5H9a.5.5 0 000-1H2.5A1.5 1.5 0 001 2.5v11z"
-                                  fill-rule="evenodd"/>
-                        </svg>
-                        Tuitear
-                    </a>
-                </li>
-                <li class="nav-item mt-4">
-                    <a href="{{ url_usr }}" style="color: white">
-                        <svg class="bi bi-box-arrow-left" fill="currentColor" height="2em" viewBox="0 0 16 16"
-                             width="2em" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                  d="M4.354 11.354a.5.5 0 000-.708L1.707 8l2.647-2.646a.5.5 0 10-.708-.708l-3 3a.5.5 0 000 .708l3 3a.5.5 0 00.708 0z"
-                                  fill-rule="evenodd"/>
-                            <path clip-rule="evenodd" d="M11.5 8a.5.5 0 00-.5-.5H2a.5.5 0 000 1h9a.5.5 0 00.5-.5z"
-                                  fill-rule="evenodd"/>
-                            <path clip-rule="evenodd"
-                                  d="M14 13.5a1.5 1.5 0 001.5-1.5V4A1.5 1.5 0 0014 2.5H7A1.5 1.5 0 005.5 4v1.5a.5.5 0 001 0V4a.5.5 0 01.5-.5h7a.5.5 0 01.5.5v8a.5.5 0 01-.5.5H7a.5.5 0 01-.5-.5v-1.5a.5.5 0 00-1 0V12A1.5 1.5 0 007 13.5h7z"
-                                  fill-rule="evenodd"/>
-                        </svg>
-                        Salir
-                    </a>
-                </li>
-                {% else %}
-                <li class="nav-item mt-4">
-                    <a href="{{ url_usr }}" style="color: white">
-                        <svg class="bi bi-box-arrow-in-right" fill="currentColor" height="2em" viewBox="0 0 16 16"
-                             width="2em" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                  d="M8.146 11.354a.5.5 0 010-.708L10.793 8 8.146 5.354a.5.5 0 11.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0z"
-                                  fill-rule="evenodd"/>
-                            <path clip-rule="evenodd" d="M1 8a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9A.5.5 0 011 8z"
-                                  fill-rule="evenodd"/>
-                            <path clip-rule="evenodd"
-                                  d="M13.5 14.5A1.5 1.5 0 0015 13V3a1.5 1.5 0 00-1.5-1.5h-8A1.5 1.5 0 004 3v1.5a.5.5 0 001 0V3a.5.5 0 01.5-.5h8a.5.5 0 01.5.5v10a.5.5 0 01-.5.5h-8A.5.5 0 015 13v-1.5a.5.5 0 00-1 0V13a1.5 1.5 0 001.5 1.5h8z"
-                                  fill-rule="evenodd"/>
-                        </svg>
-                        Iniciar sesión
-                    </a>
-                </li>
+                <div class="h-100 mt-4 border-top">
+                    <div class="align-bottom" style="word-break: break-word; word-wrap: break-word">
+                        Hola, {{ userActual.name }}
+                    </div>
+                </div>
                 {% endif %}
-            </ul>
+            </div>
         </div>
         <div class="col-9 p-0">
             {% block contenido %}{% endblock %}
