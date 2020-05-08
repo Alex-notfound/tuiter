@@ -1,16 +1,22 @@
 {% extends "skeleton.html" %}
 
 {% block contenido %}
-<div class="p-2 border-bottom">
-    <h3> {{ title }} </h3>
+<div class="pl-4 pr-4 pt-4">
+    <form action="/" id="formLogin" method="post" onsubmit="return check()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Nombre</label>
+                <input class="form-control" id="name" maxlength="50" name="name" placeholder="Nombre" type="text">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nacimiento">Fecha de nacimiento</label>
+                <input class="form-control" id="nacimiento" name="nacimiento" type="date">
+            </div>
+        </div>
+        <div class="form-group text-right">
+            <input class="btn mb-2 rounded-pill font-weight-bold"
+                   style="background-color: #00acee; color: white" type="submit" value="Acceder">
+        </div>
+    </form>
 </div>
-{% if tuits.count() > 0 %}
-{% for tuit in tuits %}
-{% include "tuit_template" %}
-{% endfor %}
-{% else %}
-<div class="p-4">
-    <h4> ¡No hay tuits! </h4>
-</div>
-{% endif %}
 {% endblock %}

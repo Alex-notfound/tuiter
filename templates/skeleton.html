@@ -26,14 +26,14 @@
             <div class="sticky-top">
                 <ul class="nav flex-column">
                     <li class="nav-item mt-4">
-                        <a href="/">
+                        <a href="/tuits/list">
                             <img src="https://miro.medium.com/max/300/1*jbXNuDJH3G09f3pUQyCmMA.png"
                                  style="width: 2em; height: 2em;">
                         </a>
                     </li>
-
+                    {% if userActual %}
                     <li class="nav-item mt-4">
-                        <a href="/" style="color: white">
+                        <a href="/tuits/list" style="color: white">
                             <svg class="bi bi-house" fill="currentColor" height="2em" viewBox="0 0 16 16" width="2em"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path clip-rule="evenodd"
@@ -74,6 +74,7 @@
                             Tuitear
                         </a>
                     </li>
+                    {% endif %}
                     <li class="nav-item mt-4">
                         <a href="{{ url_usr }}" style="color: white">
                             <svg class="bi bi-box-arrow-left" fill="currentColor" height="2em" viewBox="0 0 16 16"
@@ -109,7 +110,7 @@
                     </li>
                     {% endif %}
                 </ul>
-                {% if usr %}
+                {% if userActual %}
                 <div class="h-100 mt-4 border-top">
                     <div class="align-bottom" style="word-break: break-word; word-wrap: break-word">
                         Hola, {{ userActual.name }}
@@ -117,8 +118,12 @@
                 </div>
                 {% endif %}
             </div>
+
         </div>
         <div class="col-9 p-0">
+            <div class="p-2 border-bottom">
+                <h3> {{ title }} </h3>
+            </div>
             {% block contenido %}{% endblock %}
         </div>
         <div class="col-1 border-left">

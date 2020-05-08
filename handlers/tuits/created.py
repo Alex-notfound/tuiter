@@ -8,9 +8,10 @@ from utilities import Utilities
 class CreatedTuitsHandler(webapp2.RequestHandler):
     def get(self):
         usr, url_usr, userActual = Utilities.checkUser()
+        if userActual is None:
+            return self.redirect("/")
 
         user = User.getUser(self.request)
-        userActual = User.getUserByEmail(usr.email())
         tuits = Tuit.query(Tuit.user == user.key).order(-Tuit.dateTime)
 
         values = {
@@ -21,7 +22,7 @@ class CreatedTuitsHandler(webapp2.RequestHandler):
             "title": "Perfil de " + user.name
         }
         jinja = jinja2.get_jinja2(app=self.app)
-        self.response.write(jinja.render_template("index.html", **values))
+        self.response.write(jinja.render_template("home.html", **values))
 
 
 app = webapp2.WSGIApplication([

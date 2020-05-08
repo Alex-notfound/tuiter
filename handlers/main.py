@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+# coding: utf-8
+# !/usr/bin/env python
 #
 # Copyright 2007 Google Inc.
 #
@@ -14,26 +15,38 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import webapp2
+
 from webapp2_extras import jinja2
-from model.tuit import Tuit
 from utilities import Utilities
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         usr, url_usr, userActual = Utilities.checkUser()
-        tuits = Tuit.query().order(-Tuit.dateTime)
-
-        values = {
-            "usr": usr,
-            "url_usr": url_usr,
-            "userActual": userActual,
-            "tuits": tuits,
-            "title": "Inicio"
-        }
         jinja = jinja2.get_jinja2(app=self.app)
-        self.response.write(jinja.render_template("index.html", **values))
+
+        if userActual is None:
+            values = {
+                "usr": usr,
+                "url_usr": url_usr,
+                "title": "Registrate"
+            }
+            self.response.write(jinja.render_template("index.html", **values))
+        else:
+            return self.redirect("/tuits/list")
+
+    def post(self):
+        name = self.request.get("name", "")
+        birthDate = self.request.get("nacimiento", "")
+
+        tamName = len(name)
+        if tamName < 1 or tamName > 50:
+            return self.redirect("/")
+
+        Utilities.logUser(name, birthDate)
+        return self.redirect("/tuits/list")
 
 
 app = webapp2.WSGIApplication([

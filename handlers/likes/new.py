@@ -13,7 +13,8 @@ class NewLikeHandler(webapp2.RequestHandler):
     def get(self):
 
         usr, url_usr, userActual = Utilities.checkUser()
-
+        if userActual is None:
+            return self.redirect("/")
         try:
             if usr:
                 tuit = Tuit.getTuit(self.request)
@@ -22,7 +23,7 @@ class NewLikeHandler(webapp2.RequestHandler):
                     like.put()
                     time.sleep(2)
         finally:
-            return self.redirect("/")
+            return self.redirect("/tuits/list")
 
 
 app = webapp2.WSGIApplication([
