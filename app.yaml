@@ -11,9 +11,14 @@ handlers:
 
 - url: /
   script: handlers.main.app
+  login: required
 
 - url: /tuits/new
   script: handlers.tuits.new.app
+  login: required
+
+- url: /tuits/list
+  script: handlers.tuits.list.app
   login: required
 
 - url: /tuits/created
@@ -26,9 +31,7 @@ handlers:
 
 - url: /likes/list
   script: handlers.likes.list.app
-
-- url: /style
-  static_dir: style
+  login: required
 
 libraries:
 - name: webapp2
