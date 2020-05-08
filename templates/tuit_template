@@ -1,7 +1,8 @@
 <div class="border-bottom p-3">
     <div class="row">
         <div class="ml-3">
-            <a href="/tuits/created?id={{ tuit.user.get().key.urlsafe() }}"><h6><b><u>{{ tuit.user.get().name }}</u></b></h6></a>
+            <a href="/tuits/created?id={{ tuit.user.get().key.urlsafe() }}" style="color:white;"><h6><b>{{
+                tuit.user.get().name }}</b></h6></a>
         </div>
         <div class="ml-4">
             <small>{{ tuit.dateTime.strftime('%d %B') }}</small></div>
@@ -23,7 +24,7 @@
             </a>
         </div>
         <div class="col-4">
-                <a href="/likes/list?id={{ tuit.key.urlsafe() }}"><u>Ver likes</u></a>
+            <a href="/likes/list?id={{ tuit.key.urlsafe() }}" style="color: white">Ver likes</a>
         </div>
     </div>
 </div>
