@@ -6,7 +6,7 @@
         <div class="ml-4">
             <small>{{ tuit.dateTime.strftime('%d %B') }}</small></div>
     </div>
-    <p> {{ tuit.text }} </p>
+    <p style="word-break: break-word; word-wrap: break-word"> {{ tuit.text }} </p>
     <div class="row">
         <div class="col-1">
             <a href="/likes/new?id={{ tuit.key.urlsafe() }}">
@@ -22,10 +22,8 @@
                 </svg>
             </a>
         </div>
-        <div class="col-1">
-            <div class="row">
+        <div class="col-4">
                 <a href="/likes/list?id={{ tuit.key.urlsafe() }}"><u>Ver likes</u></a>
-            </div>
         </div>
     </div>
 </div>

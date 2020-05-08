@@ -1,9 +1,6 @@
 {% extends "skeleton.html" %}
 
 {% block contenido %}
-<div class="p-2 border-bottom">
-    <h3> {{ title }} </h3>
-</div>
 {% include "tuit_template" %}
 {% if likes.count() > 0 %}
 {% for like in likes %}
@@ -22,12 +19,13 @@
             </svg>
 
         </div>
-        <div class="col-1">
+        <div class="col-10">
             <div class="row">
-                <div class="ml-2">
-                    <h6><b><u>{{ like.user.get().name }}</u></b></h6>
+                <div class="col-8 ml-2">
+                    <a href="/tuits/created?id={{ like.user.get().key.urlsafe() }}"><h6><b><u>{{ like.user.get().name
+                        }}</u></b></h6></a>
                 </div>
-                <div class="ml-2">
+                <div class="col-4 ml-2">
                     <small>{{ like.dateTime.strftime('%d %B') }}</small>
                 </div>
             </div>
