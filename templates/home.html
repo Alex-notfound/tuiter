@@ -1,0 +1,13 @@
+{% extends "skeleton.html" %}
+
+{% block contenido %}
+{% if tuits.count() > 0 %}
+{% for tuit in tuits %}
+{% include "tuit_template" %}
+{% endfor %}
+{% else %}
+<div class="p-4">
+    <h4> ¡No hay tuits! </h4>
+</div>
+{% endif %}
+{% endblock %}
