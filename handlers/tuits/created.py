@@ -13,7 +13,7 @@ class CreatedTuitsHandler(webapp2.RequestHandler):
 
         user = User.getUser(self.request)
         tuits = Tuit.query(Tuit.user == user.key).order(-Tuit.dateTime)
-        print user.birthDate
+
         values = {
             "usr": usr,
             "url_usr": url_usr,
