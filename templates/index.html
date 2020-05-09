@@ -30,7 +30,8 @@
             name.classList.add('is-invalid');
             toret = false;
         }
-        if (nacimiento.value == '' || fecha == null || fecha >= new Date()) {
+        
+        if (nacimiento.value == '' || fecha == null || fecha.toDateString() >= new Date().toDateString()) {
             nacimiento.classList.add('is-invalid');
             return false;
         }
