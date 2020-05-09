@@ -22,7 +22,7 @@
 
 <div class="container" style="height: 100%">
     <div class="row" style="background-color: rgb(21, 32, 43); height: 100%;">
-        <div class="col-2 border-right" id="navbar">
+        <div class="col-2 border-right border-dark" id="navbar">
             <div class="sticky-top">
                 <ul class="nav flex-column">
                     <li class="nav-item mt-4">
@@ -111,7 +111,7 @@
                     {% endif %}
                 </ul>
                 {% if userActual %}
-                <div class="h-100 mt-4 border-top">
+                <div class="h-100 mt-4 border-top border-dark">
                     <div class="align-bottom" style="word-break: break-word; word-wrap: break-word">
                         Hola, {{ userActual.name }}
                     </div>
@@ -121,12 +121,12 @@
 
         </div>
         <div class="col-9 p-0">
-            <div class="p-2 border-bottom">
-                <h3> {{ title }} </h3>
+            <div class="p-2 border-bottom border-dark">
+                <h6><strong><b> {{ title }} </b></strong></h6>
             </div>
             {% block contenido %}{% endblock %}
         </div>
-        <div class="col-1 border-left">
+        <div class="col-1 border-left border-dark">
         </div>
     </div>
 </div>
