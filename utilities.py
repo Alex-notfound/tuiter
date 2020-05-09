@@ -1,5 +1,4 @@
 import time
-import datetime
 
 from webapp2_extras.users import users
 
@@ -16,7 +15,7 @@ class Utilities:
 
         usr = users.get_current_user()
         user = User.getUserByEmail(usr.email())
-        print(user)
+
         if user is None:
             url_usr = users.create_login_url("/")
         else:
@@ -32,7 +31,7 @@ class Utilities:
         if usr:
             url_usr = users.create_logout_url("/")
             user = User(name=name, email=usr.email(),
-                        birthDate=datetime.datetime.strptime(birthDate, "%Y-%m-%d").date())
+                        birthDate=birthDate)
             user.put()
             time.sleep(2)
         else:
