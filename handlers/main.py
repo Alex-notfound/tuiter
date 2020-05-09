@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from datetime import datetime
 
 import webapp2
 
@@ -42,10 +43,16 @@ class MainHandler(webapp2.RequestHandler):
         birthDate = self.request.get("nacimiento", "")
 
         tamName = len(name)
-        if tamName < 1 or tamName > 50:
+
+        try:
+            fechaNac = datetime.strptime(birthDate, "%Y-%m-%d").date()
+            if tamName < 1 or tamName > 50 or fechaNac >= datetime.now().date():
+                return self.redirect("/")
+            Utilities.logUser(name, fechaNac)
+        except:
+            print("Datos invalidos")
             return self.redirect("/")
 
-        Utilities.logUser(name, birthDate)
         return self.redirect("/tuits/list")
 
 
