@@ -13,13 +13,13 @@ class CreatedTuitsHandler(webapp2.RequestHandler):
 
         user = User.getUser(self.request)
         tuits = Tuit.query(Tuit.user == user.key).order(-Tuit.dateTime)
-
+        print user.birthDate
         values = {
             "usr": usr,
             "url_usr": url_usr,
             "userActual": userActual,
             "tuits": tuits,
-            "title": "Perfil de " + user.name
+            "title": "Perfil de " + user.name + ", nacido en " + str(user.birthDate)
         }
         jinja = jinja2.get_jinja2(app=self.app)
         self.response.write(jinja.render_template("home.html", **values))
