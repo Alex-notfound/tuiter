@@ -24,7 +24,11 @@
             </a>
         </div>
         <div class="col-4">
+            {% if likes %}
+            {{ likes.count() }}
+            {% else %}
             <a href="/likes/list?id={{ tuit.key.urlsafe() }}" style="color: white">Ver likes</a>
+            {% endif %}
         </div>
     </div>
 </div>
