@@ -26,14 +26,15 @@ from utilities import Utilities
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         usr, url_usr, userActual = Utilities.checkUser()
-        jinja = jinja2.get_jinja2(app=self.app)
 
         if userActual is None:
             values = {
                 "usr": usr,
                 "url_usr": url_usr,
-                "title": "Registrate"
+                "title": "Registrate",
+                "suggestedUsers": Utilities.suggestUsers(userActual)
             }
+            jinja = jinja2.get_jinja2(app=self.app)
             self.response.write(jinja.render_template("index.html", **values))
         else:
             return self.redirect("/tuits/list")

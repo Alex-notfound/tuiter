@@ -20,6 +20,7 @@ class ListTuitsHandler(webapp2.RequestHandler):
             "userActual": userActual,
             "tuits": tuits,
             "Like" : Like,
+            "suggestedUsers": Utilities.suggestUsers(userActual),
             "title": "Inicio"
         }
         jinja = jinja2.get_jinja2(app=self.app)

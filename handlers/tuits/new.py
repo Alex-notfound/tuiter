@@ -5,10 +5,8 @@ import webapp2
 import time
 
 from webapp2_extras import jinja2
-from webapp2_extras.users import users
 
 from model.tuit import Tuit
-from model.user import User
 from utilities import Utilities
 
 
@@ -22,6 +20,7 @@ class NewTuitHandler(webapp2.RequestHandler):
             "usr": usr,
             "url_usr": url_usr,
             "userActual": userActual,
+            "suggestedUsers": Utilities.suggestUsers(userActual),
             "title": "Tuitear"
         }
 

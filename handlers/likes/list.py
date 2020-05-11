@@ -21,6 +21,7 @@ class ListLikesHandler(webapp2.RequestHandler):
             "tuit": tuit,
             "likes": likes,
             "Like": Like,
+            "suggestedUsers": Utilities.suggestUsers(userActual),
             "title": "Likes"
         }
 

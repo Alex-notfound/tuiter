@@ -2,6 +2,7 @@ import time
 
 from webapp2_extras.users import users
 
+from model.like import Like
 from model.user import User
 
 
@@ -39,3 +40,7 @@ class Utilities:
             user = User(name="invitado")
 
         return usr, url_usr, user
+
+    @staticmethod
+    def suggestUsers(user):
+        return User.query(User.key != user.key).fetch(limit=3);

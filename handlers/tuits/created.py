@@ -22,6 +22,7 @@ class CreatedTuitsHandler(webapp2.RequestHandler):
             "userActual": userActual,
             "tuits": tuits,
             "Like": Like,
+            "suggestedUsers": Utilities.suggestUsers(userActual),
             "title": "Perfil de " + user.name + ", nacido en " + str(user.birthDate)
         }
         jinja = jinja2.get_jinja2(app=self.app)

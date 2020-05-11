@@ -3,7 +3,7 @@
   flex-direction: column;">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="https://miro.medium.com/max/300/1*jbXNuDJH3G09f3pUQyCmMA.png">
+    <link href="https://miro.medium.com/max/300/1*jbXNuDJH3G09f3pUQyCmMA.png" rel="icon">
     <title>Tuiter</title>
 </head>
 <body style="background-color: rgb(21, 32, 43); color: white; height: 100%; display: flex;
@@ -121,13 +121,34 @@
             </div>
 
         </div>
-        <div class="col-9 p-0">
+        <div class="col-7 p-0">
             <div class="p-2 border-bottom border-dark">
-                <h6><strong><b> {{ title }} </b></strong></h6>
+                <h5><strong><b> {{ title }} </b></strong></h5>
             </div>
             {% block contenido %}{% endblock %}
         </div>
-        <div class="col-1 border-left border-dark">
+        <div class="col-3 border-left border-dark">
+            {% if suggestedUsers %}
+            <div class="mt-4 rounded" style="background-color: rgb(25, 39, 52);">
+                <div class="p-2 border-bottom border-dark">
+                    <h5><strong><b> Tal vez te guste </b></strong></h5>
+                </div>
+
+                <div class="p-2 border-bottom border-dark">
+                    <a href="/tuits/created?id={{ suggestedUsers[0].key.urlsafe() }}" style="color:white;"><h6><b>{{
+                         suggestedUsers[0].name }}</b></h6></a>
+                </div>
+                <div class="p-2 border-bottom border-dark">
+                    <a href="/tuits/created?id={{ suggestedUsers[1].key.urlsafe() }}" style="color:white;"><h6><b>{{
+                         suggestedUsers[1].name }}</b></h6></a>
+                </div>
+                <div class="pt-2 pl-2 pr-2 pb-1">
+                    <a href="/tuits/created?id={{ suggestedUsers[2].key.urlsafe() }}" style="color:white;"><h6><b>{{
+                         suggestedUsers[2].name }}</b></h6></a>
+                </div>
+
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
