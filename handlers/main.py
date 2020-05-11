@@ -32,7 +32,7 @@ class MainHandler(webapp2.RequestHandler):
                 "usr": usr,
                 "url_usr": url_usr,
                 "title": "Registrate",
-                "suggestedUsers": Utilities.suggestUsers(userActual)
+                "suggestedUsers": None
             }
             jinja = jinja2.get_jinja2(app=self.app)
             self.response.write(jinja.render_template("index.html", **values))
