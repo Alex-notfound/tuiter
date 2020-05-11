@@ -25,13 +25,15 @@
         const name = document.getElementById("name");
         const nacimiento = document.getElementById("nacimiento");
         const fecha = new Date(nacimiento.value)
+        var date = new Date();
+        date.setDate(date.getDate() - 1);
         var toret = true;
         if (name.value.trim().length < 1 || name.value.length > 50) {
             name.classList.add('is-invalid');
             toret = false;
         }
-        
-        if (nacimiento.value == '' || fecha == null || fecha.toDateString() >= new Date().toDateString()) {
+
+        if (nacimiento.value == '' || fecha == null || fecha.toDateString() > date) {
             nacimiento.classList.add('is-invalid');
             return false;
         }
