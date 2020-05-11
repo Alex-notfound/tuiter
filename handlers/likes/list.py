@@ -20,6 +20,7 @@ class ListLikesHandler(webapp2.RequestHandler):
             "userActual": userActual,
             "tuit": tuit,
             "likes": likes,
+            "Like": Like,
             "title": "Likes"
         }
 

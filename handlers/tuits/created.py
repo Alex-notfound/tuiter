@@ -1,5 +1,7 @@
 import webapp2
 from webapp2_extras import jinja2
+
+from model.like import Like
 from model.tuit import Tuit
 from model.user import User
 from utilities import Utilities
@@ -19,6 +21,7 @@ class CreatedTuitsHandler(webapp2.RequestHandler):
             "url_usr": url_usr,
             "userActual": userActual,
             "tuits": tuits,
+            "Like": Like,
             "title": "Perfil de " + user.name + ", nacido en " + str(user.birthDate)
         }
         jinja = jinja2.get_jinja2(app=self.app)
