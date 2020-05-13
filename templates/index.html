@@ -33,7 +33,7 @@
             toret = false;
         }
 
-        if (nacimiento.value == '' || fecha == null || fecha.toDateString() > date) {
+        if (nacimiento.value == '' || fecha == null || fecha > date) {
             nacimiento.classList.add('is-invalid');
             return false;
         }
