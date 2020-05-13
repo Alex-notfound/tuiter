@@ -128,7 +128,7 @@
             {% block contenido %}{% endblock %}
         </div>
         <div class="col-3 border-left border-dark">
-            {% if suggestedUsers %}
+            {% if suggestedUsers and suggestedUsers[0] and suggestedUsers[1] and suggestedUsers[2]%}
             <div class="mt-4 rounded" style="background-color: rgb(25, 39, 52);">
                 <div class="p-2 border-bottom border-dark">
                     <h5><strong><b> Tal vez te guste </b></strong></h5>
